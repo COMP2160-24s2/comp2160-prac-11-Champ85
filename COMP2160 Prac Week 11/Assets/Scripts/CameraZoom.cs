@@ -37,6 +37,7 @@ public class CameraZoom : MonoBehaviour
         if(cam.orthographic)
         {
             cam.orthographicSize += zoom/sensitivity;
+            cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, 1, 100);
         }
         else
         {
