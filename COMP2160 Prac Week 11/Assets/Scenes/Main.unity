@@ -130,6 +130,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1093419191901630351, guid: b96044efa2ae54750ad24e39e1352865,
+        type: 3}
+      propertyPath: sensitivity
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1223692753452303015, guid: b96044efa2ae54750ad24e39e1352865,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -353,6 +358,12 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!224 &489834856 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2155366059082070411, guid: b96044efa2ae54750ad24e39e1352865,
+    type: 3}
+  m_PrefabInstance: {fileID: 331283}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,7 +585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetOne: {fileID: 923977101}
-  targetTwo: {fileID: 1923252079}
+  targetTwo: {fileID: 489834856}
 --- !u!4 &1357612520
 Transform:
   m_ObjectHideFlags: 0
@@ -591,12 +602,6 @@ Transform:
   - {fileID: 7675371378090306038}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!224 &1923252079 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7485987256551808895, guid: b96044efa2ae54750ad24e39e1352865,
-    type: 3}
-  m_PrefabInstance: {fileID: 331283}
-  m_PrefabAsset: {fileID: 0}
 --- !u!20 &2408856355099670849
 Camera:
   m_ObjectHideFlags: 0

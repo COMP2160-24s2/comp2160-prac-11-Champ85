@@ -11,7 +11,7 @@ public class CameraZoom : MonoBehaviour
     #endregion
 
     private Camera cam;
-    [SerializeField] private float sensitivity = 10.0f;
+    [SerializeField] private float sensitivity = 0.01f;
 
     void Awake()
     {
@@ -36,12 +36,12 @@ public class CameraZoom : MonoBehaviour
         float zoom = zoomAction.ReadValue<float>();
         if(cam.orthographic)
         {
-            cam.orthographicSize += zoom/sensitivity;
+            cam.orthographicSize += zoom*sensitivity;
             cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, 1, 100);
         }
         else
         {
-            cam.fieldOfView += zoom/sensitivity;
+            cam.fieldOfView += zoom*sensitivity;
         }
     }
 }

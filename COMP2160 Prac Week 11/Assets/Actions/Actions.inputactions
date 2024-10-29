@@ -15,15 +15,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "select",
-                    "type": "Button",
-                    "id": "8bf9dd9a-f831-4f4e-ae80-e4b757e876cd",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "delta",
                     "type": "Value",
                     "id": "9141cb6e-0ccf-47d8-bfa5-c32b5b9d5394",
@@ -31,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "select",
+                    "type": "Button",
+                    "id": "8bf9dd9a-f831-4f4e-ae80-e4b757e876cd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [

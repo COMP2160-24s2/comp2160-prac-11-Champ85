@@ -42,7 +42,7 @@ public class UIManager : MonoBehaviour
     public event TargetSelectedEventHandler TargetSelected;
 #endregion
 
-private bool firstEvent = false;
+private bool firstEvent = true;
 
 #region Init & Destroy
     void Awake()
@@ -85,15 +85,18 @@ private bool firstEvent = false;
 
     private void MoveCrosshair() 
     {
-        if(useMouseDelta && firstEvent)
+        if(useMouseDelta )
         {
-            Vector2 mousePos = deltaAction.ReadValue<Vector2>();//screen coordinates
-            //Debug.Log(mousePos);
-            Ray ray = cam.ScreenPointToRay(new Vector3(mousePos.x, mousePos.y, cam.nearClipPlane));
-            RaycastHit hit;
-            if(Physics.Raycast(ray, out hit, Mathf.Infinity))
-            {
-                crosshair.position = hit.point;
+            if(!deltaAction.ReadValue<Vector2>().Equals(Vector2.zero)){
+                //Debug.Log("position: " + mouseAction.ReadValue<Vector2>() + ", delta: " + deltaAction.ReadValue<Vector2>());
+                Vector2 mousePos = mouseAction.ReadValue<Vector2>();//screen coordinates
+                //Debug.Log(mousePos);
+                Ray ray = cam.ScreenPointToRay(new Vector3(mousePos.x, mousePos.y, cam.nearClipPlane));
+                RaycastHit hit;
+                if(Physics.Raycast(ray, out hit, Mathf.Infinity))
+                {
+                    crosshair.position = new Vector3(Mathf.Clamp(hit.point.x, 0, Screen.width), Mathf.Clamp(hit.point.y, 0, Screen.height), hit.point.z);
+                }
             }
         }
         else
@@ -107,7 +110,7 @@ private bool firstEvent = false;
                 crosshair.position = hit.point;
             }
         }
-        firstEvent = true;
+        firstEvent = false;
     }
 
     private void SelectTarget()

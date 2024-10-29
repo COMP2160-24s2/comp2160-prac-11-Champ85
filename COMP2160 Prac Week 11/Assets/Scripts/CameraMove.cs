@@ -10,6 +10,10 @@ public class CameraMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = targetOne.position + (targetTwo.position - targetOne.position)/2;
+        if(targetTwo != null){
+            transform.position = targetOne.position + (targetTwo.position - targetOne.position)/2;
+        } else {
+            transform.position = targetOne.position;
+        }
     }
 }

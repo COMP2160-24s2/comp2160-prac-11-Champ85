@@ -37,15 +37,6 @@ public partial class @Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""select"",
-                    ""type"": ""Button"",
-                    ""id"": ""8bf9dd9a-f831-4f4e-ae80-e4b757e876cd"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""delta"",
                     ""type"": ""Value"",
                     ""id"": ""9141cb6e-0ccf-47d8-bfa5-c32b5b9d5394"",
@@ -53,6 +44,15 @@ public partial class @Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""select"",
+                    ""type"": ""Button"",
+                    ""id"": ""8bf9dd9a-f831-4f4e-ae80-e4b757e876cd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -136,8 +136,8 @@ public partial class @Actions: IInputActionCollection2, IDisposable
         // mouse
         m_mouse = asset.FindActionMap("mouse", throwIfNotFound: true);
         m_mouse_position = m_mouse.FindAction("position", throwIfNotFound: true);
-        m_mouse_select = m_mouse.FindAction("select", throwIfNotFound: true);
         m_mouse_delta = m_mouse.FindAction("delta", throwIfNotFound: true);
+        m_mouse_select = m_mouse.FindAction("select", throwIfNotFound: true);
         // camera
         m_camera = asset.FindActionMap("camera", throwIfNotFound: true);
         m_camera_zoom = m_camera.FindAction("zoom", throwIfNotFound: true);
@@ -203,15 +203,15 @@ public partial class @Actions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_mouse;
     private List<IMouseActions> m_MouseActionsCallbackInterfaces = new List<IMouseActions>();
     private readonly InputAction m_mouse_position;
-    private readonly InputAction m_mouse_select;
     private readonly InputAction m_mouse_delta;
+    private readonly InputAction m_mouse_select;
     public struct MouseActions
     {
         private @Actions m_Wrapper;
         public MouseActions(@Actions wrapper) { m_Wrapper = wrapper; }
         public InputAction @position => m_Wrapper.m_mouse_position;
-        public InputAction @select => m_Wrapper.m_mouse_select;
         public InputAction @delta => m_Wrapper.m_mouse_delta;
+        public InputAction @select => m_Wrapper.m_mouse_select;
         public InputActionMap Get() { return m_Wrapper.m_mouse; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -224,12 +224,12 @@ public partial class @Actions: IInputActionCollection2, IDisposable
             @position.started += instance.OnPosition;
             @position.performed += instance.OnPosition;
             @position.canceled += instance.OnPosition;
-            @select.started += instance.OnSelect;
-            @select.performed += instance.OnSelect;
-            @select.canceled += instance.OnSelect;
             @delta.started += instance.OnDelta;
             @delta.performed += instance.OnDelta;
             @delta.canceled += instance.OnDelta;
+            @select.started += instance.OnSelect;
+            @select.performed += instance.OnSelect;
+            @select.canceled += instance.OnSelect;
         }
 
         private void UnregisterCallbacks(IMouseActions instance)
@@ -237,12 +237,12 @@ public partial class @Actions: IInputActionCollection2, IDisposable
             @position.started -= instance.OnPosition;
             @position.performed -= instance.OnPosition;
             @position.canceled -= instance.OnPosition;
-            @select.started -= instance.OnSelect;
-            @select.performed -= instance.OnSelect;
-            @select.canceled -= instance.OnSelect;
             @delta.started -= instance.OnDelta;
             @delta.performed -= instance.OnDelta;
             @delta.canceled -= instance.OnDelta;
+            @select.started -= instance.OnSelect;
+            @select.performed -= instance.OnSelect;
+            @select.canceled -= instance.OnSelect;
         }
 
         public void RemoveCallbacks(IMouseActions instance)
@@ -309,8 +309,8 @@ public partial class @Actions: IInputActionCollection2, IDisposable
     public interface IMouseActions
     {
         void OnPosition(InputAction.CallbackContext context);
-        void OnSelect(InputAction.CallbackContext context);
         void OnDelta(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
     }
     public interface ICameraActions
     {

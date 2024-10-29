@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crosshair: {fileID: 7485987256551808895}
   target: {fileID: 2155366059082070411}
+  useMouseDelta: 0
 --- !u!114 &1093419191901630351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,6 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bb76c6087301a348b61e659fce47dcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sensitivity: 0.1
 --- !u!1 &3945490509769068079
 GameObject:
   m_ObjectHideFlags: 0
